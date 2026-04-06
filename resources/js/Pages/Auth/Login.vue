@@ -21,10 +21,10 @@ const submit = () => {
             <!-- Brand Logo / Identity -->
             <div class="flex flex-col items-center mb-12 animate-in fade-in slide-in-from-bottom-4 duration-1000">
                 <div class="w-24 h-24 mb-6 relative">
-                    <img :src="'/logo.jpg'" alt="MEUBLE DRISS" class="w-full h-full object-contain rounded-2xl shadow-md" />
+                    <img :src="'/logo'" alt="VECTOR" class="w-full h-full object-contain rounded-2xl shadow-md" />
                 </div>
-                <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tighter text-brand-charcoal mb-1 text-center">MEUBLE DRISS</h1>
-                <p class="text-brand-gold font-bold uppercase tracking-[0.2em] text-xs">Meuble & Ameublement</p>
+                <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tighter text-brand-charcoal mb-1 text-center">VECTOR</h1>
+                <p class="text-brand-gold font-bold uppercase tracking-[0.2em] text-xs">STE L'Innovation De Mode</p>
             </div>
 
             <!-- Login Form -->
@@ -77,7 +77,7 @@ const submit = () => {
             </div>
 
             <footer class="mt-12 text-center text-[#706f6c] text-sm animate-in fade-in duration-1000 delay-500">
-                &copy; {{ new Date().getFullYear() }} Meuble Driss. All rights reserved.
+                &copy; {{ new Date().getFullYear() }} Vector. All rights reserved.
             </footer>
         </div>
     </div>
