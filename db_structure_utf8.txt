@@ -1,0 +1,673 @@
+﻿=== BASE DE DONN├ëES ===
+
+Connexion : pgsql
+Base      : vector2024
+H├┤te      : 127.0.0.1:5432
+
+Nombre de tables : 259
+
+--- TABLES PRINCIPALES (utilis├®es par l'app) ---
+
+Table: users
+  - userid (integer) 
+  - login (text) nullable
+  - password (text) nullable
+  - userdroitid (integer) 
+  - societeid (integer) 
+  - agencebid (integer) nullable
+  - employeeid (integer) nullable
+  - clientid (bigint) nullable
+  - siteid (integer) nullable
+  - plafonremise (numeric) 
+
+Table: fournisseurs
+  - fournisseurid (bigint) 
+  - rib (text) nullable
+  - telbancaire (text) nullable
+  - bloque (boolean) 
+  - fournisseurcategorie2id (integer) nullable
+  - fournisseurcategorieid (integer) nullable
+  - fournisseurfamilleid (integer) 
+  - mf (text) nullable
+  - nom (text) 
+  - rc (text) nullable
+  - remise (numeric) 
+  - tel (text) nullable
+  - tel2 (text) nullable
+  - adressebancaire (text) nullable
+  - adressefacturation (text) nullable
+  - adresselivraison (text) nullable
+  - agence (text) nullable
+  - autofacturation (boolean) 
+  - barcode (text) nullable
+  - echeance (numeric) 
+  - email (text) nullable
+  - fax (text) nullable
+  - fidelite (boolean) 
+  - iban (text) nullable
+  - impaye (numeric) 
+  - modepieceid (integer) nullable
+  - plafonecheance (numeric) 
+  - plafonsolde (numeric) 
+  - solde (numeric) 
+  - datecreation (timestamp without time zone) 
+  - datemodification (timestamp without time zone) 
+  - code (integer) 
+  - deviseid (integer) nullable
+  - anciencode (text) nullable
+  - fournisseurcode (text) nullable
+  - ville (text) nullable
+  - datesoldeinitial (timestamp without time zone) 
+  - soldeinitial (numeric) 
+  - libellecontact1 (text) nullable
+  - libellecontact2 (text) nullable
+  - remarque (text) nullable
+  - modalitereglementid (integer) nullable
+  - tauxrs (numeric) 
+  - libellecontact3 (text) nullable
+
+Table: fournisseurfamilles
+  - fournisseurfamilleid (integer) 
+  - bloque (boolean) 
+  - description (text) nullable
+  - fournisseurfamillelibelle (text) 
+
+Table: ffactures
+  - ffactureid (bigint) 
+  - fournisseurid (bigint) 
+  - siteid (integer) 
+  - ffacturenumero (bigint) 
+  - numerointerne (text) nullable
+  - modepieceid (integer) 
+  - etatfactureid (integer) 
+  - cloture (boolean) 
+  - datecreation (timestamp without time zone) 
+  - ffacturedate (timestamp without time zone) 
+  - totalbrutht (numeric) 
+  - remise (numeric) 
+  - vremise (numeric) 
+  - totalnetht (numeric) 
+  - totaltva (numeric) 
+  - droittimbre (numeric) 
+  - totalttc (numeric) 
+  - acompte (numeric) 
+  - netapayer (numeric) 
+  - totalqte (numeric) 
+  - fcommandeid (bigint) nullable
+  - fdevisid (bigint) nullable
+  - fblid (bigint) nullable
+  - totalrs (numeric) 
+  - rspaye (numeric) 
+  - tauxrs (numeric) 
+  - description (text) nullable
+  - typefactureid (integer) nullable
+  - totaldc (numeric) 
+  - totalfodec (numeric) 
+  - userid (integer) nullable
+  - avanceimpot (numeric) 
+  - coefglobal (numeric) 
+  - cours (numeric) 
+  - fraisdivers (numeric) 
+  - fraisdouane (numeric) 
+  - fraistransit (numeric) 
+  - fraistransport (numeric) 
+  - fraistva (numeric) 
+  - totalttcdevise (numeric) 
+  - correction (numeric) 
+  - raison (text) nullable
+  - datedeclaration (timestamp without time zone) nullable
+  - declare (boolean) 
+  - remiseexcep (numeric) 
+  - vremiseexcep (numeric) 
+  - modestock (integer) 
+  - notelibelle (text) nullable
+  - modalitereglementid (integer) nullable
+  - statusfactureid (integer) nullable
+  - valodelai (numeric) 
+  - valomoyenne (numeric) 
+  - valoqte (numeric) 
+  - valoqualite (numeric) 
+
+Table: freglements
+  - freglementid (bigint) 
+  - fournisseurid (bigint) 
+  - siteid (integer) 
+  - date (timestamp without time zone) 
+  - datecreation (timestamp without time zone) 
+  - echeance (timestamp without time zone) 
+  - montant (numeric) 
+  - montantnet (numeric) 
+  - montantrs (numeric) 
+  - tauxrs (numeric) 
+  - modereglementid (integer) 
+  - statusreglementid (integer) 
+  - agencebid (integer) 
+  - documentid (bigint) 
+  - typeid (integer) 
+  - numero (text) nullable
+  - description (text) nullable
+  - raisonreglement (text) nullable
+  - agencereglement (text) nullable
+  - identitereglement (text) nullable
+  - telreglement (text) nullable
+  - observation (text) nullable
+  - documentavid (bigint) 
+  - montantav (numeric) 
+  - fchequeid (integer) nullable
+  - ismultiple (boolean) 
+  - multipleid (bigint) 
+  - nbrmultiple (integer) 
+  - userid (integer) nullable
+  - reglementcltid (bigint) 
+  - nonaffecte (numeric) 
+  - fpointageid (bigint) nullable
+  - deviseid (integer) nullable
+  - ristourne (numeric) 
+  - acompteimpaye (numeric) 
+  - resteimpaye (numeric) 
+
+Table: favoirs
+  - favoirid (bigint) 
+  - fournisseurid (bigint) 
+  - siteid (integer) 
+  - favoirnumero (bigint) 
+  - numerointerne (text) nullable
+  - modepieceid (integer) 
+  - etatfactureid (integer) 
+  - cloture (boolean) 
+  - datecreation (timestamp without time zone) 
+  - favoirdate (timestamp without time zone) 
+  - totalbrutht (numeric) 
+  - remise (numeric) 
+  - vremise (numeric) 
+  - totalnetht (numeric) 
+  - totaltva (numeric) 
+  - droittimbre (numeric) 
+  - totalttc (numeric) 
+  - acompte (numeric) 
+  - netapayer (numeric) 
+  - totalqte (numeric) 
+  - totalrs (numeric) 
+  - rspaye (numeric) 
+  - tauxrs (numeric) 
+  - fbrid (bigint) nullable
+  - ffactureid (bigint) nullable
+  - description (text) nullable
+  - totaldc (numeric) 
+  - totalfodec (numeric) 
+  - userid (integer) nullable
+  - correction (numeric) 
+  - raison (text) nullable
+  - datedeclaration (timestamp without time zone) nullable
+  - declare (boolean) 
+  - modestock (integer) 
+  - notelibelle (text) nullable
+  - modalitereglementid (integer) nullable
+
+Table: fbls
+  - fblid (bigint) 
+  - fournisseurid (bigint) 
+  - siteid (integer) 
+  - fblnumero (bigint) 
+  - numerointerne (text) nullable
+  - modepieceid (integer) 
+  - etatblid (integer) 
+  - transfere (boolean) 
+  - datecreation (timestamp without time zone) 
+  - fbldate (timestamp without time zone) 
+  - totalbrutht (numeric) 
+  - remise (numeric) 
+  - vremise (numeric) 
+  - totalnetht (numeric) 
+  - totaltva (numeric) 
+  - totalttc (numeric) 
+  - acompte (numeric) 
+  - netapayer (numeric) 
+  - totalqte (numeric) 
+  - fcommandeid (bigint) nullable
+  - fdevisid (bigint) nullable
+  - description (text) nullable
+  - totaldc (numeric) 
+  - totalfodec (numeric) 
+  - userid (integer) nullable
+  - cloturee (boolean) 
+  - correction (numeric) 
+  - raison (text) nullable
+  - modestock (integer) 
+  - notelibelle (text) nullable
+  - modalitereglementid (integer) nullable
+  - fabriquantid (integer) nullable
+  - modereceptionid (integer) 
+  - valodelai (numeric) 
+  - valomoyenne (numeric) 
+  - valoqte (numeric) 
+  - valoqualite (numeric) 
+
+Table: fbrs
+  - fbrid (bigint) 
+  - fournisseurid (bigint) 
+  - siteid (integer) 
+  - fbrnumero (bigint) 
+  - numerointerne (text) nullable
+  - modepieceid (integer) 
+  - etatblid (integer) 
+  - transfere (boolean) 
+  - datecreation (timestamp without time zone) 
+  - fbrdate (timestamp without time zone) 
+  - totalbrutht (numeric) 
+  - remise (numeric) 
+  - vremise (numeric) 
+  - totalnetht (numeric) 
+  - totaltva (numeric) 
+  - totalttc (numeric) 
+  - acompte (numeric) 
+  - netapayer (numeric) 
+  - totalqte (numeric) 
+  - fblid (bigint) nullable
+  - description (text) nullable
+  - totaldc (numeric) 
+  - totalfodec (numeric) 
+  - userid (integer) nullable
+  - correction (numeric) 
+  - raison (text) nullable
+  - modestock (integer) 
+  - notelibelle (text) nullable
+  - modalitereglementid (integer) nullable
+
+Table: detfbls
+  - detfblid (bigint) 
+  - fblid (bigint) 
+  - produitid (bigint) 
+  - taxefamilleid (integer) 
+  - ht (numeric) 
+  - ttc (numeric) 
+  - qte (numeric) 
+  - totalht (numeric) 
+  - remise (numeric) 
+  - remise2 (numeric) 
+  - totalhtnet (numeric) 
+  - taxe1 (numeric) 
+  - vtaxe1 (numeric) 
+  - taxe2 (numeric) 
+  - vtaxe2 (numeric) 
+  - taxe3 (numeric) 
+  - vtaxe3 (numeric) 
+  - taxe4 (numeric) 
+  - vtaxe4 (numeric) 
+  - tva (numeric) 
+  - vtva (numeric) 
+  - totalttc (numeric) 
+  - totalttcnet (numeric) 
+  - detfcid (bigint) nullable
+  - qtetrans (numeric) 
+  - siteid (integer) 
+  - date (timestamp without time zone) 
+  - dateproduction (timestamp without time zone) nullable
+  - dlc (timestamp without time zone) nullable
+  - qtesortie (numeric) 
+  - qtestock (numeric) 
+  - description (text) nullable
+  - lot (text) nullable
+  - qteretour (numeric) 
+  - ordre (integer) 
+  - produit2id (bigint) nullable
+  - prodid (integer) 
+  - modestock (integer) 
+  - remise3 (numeric) 
+  - remiseglobal (numeric) 
+  - ttcnet (numeric) 
+  - emplacementid (integer) nullable
+  - fabriquantid (integer) nullable
+  - typematiereid (integer) nullable
+  - poids (numeric) 
+  - grammagegr (numeric) 
+  - largeurmm (numeric) 
+  - longueurm (numeric) 
+  - modereceptionid (integer) 
+
+Table: detfbrs
+  - detfbrid (bigint) 
+  - fbrid (bigint) 
+  - produitid (bigint) 
+  - taxefamilleid (integer) 
+  - ht (numeric) 
+  - ttc (numeric) 
+  - qte (numeric) 
+  - totalht (numeric) 
+  - remise (numeric) 
+  - remise2 (numeric) 
+  - totalhtnet (numeric) 
+  - taxe1 (numeric) 
+  - vtaxe1 (numeric) 
+  - taxe2 (numeric) 
+  - vtaxe2 (numeric) 
+  - taxe3 (numeric) 
+  - vtaxe3 (numeric) 
+  - taxe4 (numeric) 
+  - vtaxe4 (numeric) 
+  - tva (numeric) 
+  - vtva (numeric) 
+  - totalttc (numeric) 
+  - totalttcnet (numeric) 
+  - detfblid (bigint) nullable
+  - qtetrans (numeric) 
+  - siteid (integer) 
+  - date (timestamp without time zone) 
+  - dlc (timestamp without time zone) nullable
+  - dateproduction (timestamp without time zone) nullable
+  - description (text) nullable
+  - lot (text) nullable
+  - ordre (integer) 
+  - detffactureid (bigint) nullable
+  - produit2id (bigint) nullable
+  - prodid (integer) 
+  - modestock (integer) 
+  - remise3 (numeric) 
+  - remiseglobal (numeric) 
+
+Table: produits
+  - produitid (bigint) 
+  - ismasque (boolean) 
+  - barcode2 (text) nullable
+  - datecreation (timestamp without time zone) nullable
+  - description (text) nullable
+  - familleid (integer) 
+  - groupeid (integer) nullable
+  - isachat (boolean) 
+  - islotachat (boolean) 
+  - islotvente (boolean) 
+  - ispesable (boolean) 
+  - isserial (boolean) 
+  - isstock (boolean) 
+  - isvente (boolean) 
+  - uniteid (integer) 
+  - produitcode (text) 
+  - produitlibelle (text) 
+  - produitlibellecourt (text) nullable
+  - reference (text) nullable
+  - sousfamilleid (integer) 
+  - category2id (integer) nullable
+  - category3id (integer) nullable
+  - category4id (integer) nullable
+  - categoryid (integer) nullable
+  - taxefamilleid (integer) 
+  - coefficient (numeric) 
+  - fournisseurid (bigint) nullable
+  - frais (numeric) 
+  - ht_achat (numeric) 
+  - ht_vente (numeric) 
+  - isbloqueremachat (boolean) 
+  - isbloqueremvente (boolean) 
+  - pamp (numeric) 
+  - pmarge (numeric) 
+  - pmarque (numeric) 
+  - prix_revient (numeric) 
+  - remise_achat (numeric) 
+  - remise_vente (numeric) 
+  - ttc_achat (numeric) 
+  - ttc_vente (numeric) 
+  - typeproduitid (integer) 
+  - isfidelite (boolean) 
+  - remise_max (numeric) 
+  - stock_min (numeric) 
+  - datemodification (timestamp without time zone) 
+  - periodepamp (integer) 
+  - valstock (integer) 
+  - equivalentid (bigint) 
+  - productiondate (boolean) 
+  - debutlot (text) nullable
+  - prefixelot (text) nullable
+  - suffixelot (text) nullable
+  - declinaison (boolean) 
+  - dcachat (numeric) 
+  - dcvente (numeric) 
+  - fodecachat (numeric) 
+  - fodecvente (numeric) 
+  - tvaachat (numeric) 
+  - tvavente (numeric) 
+  - isbloqueupdate (boolean) 
+  - datepremption (timestamp without time zone) nullable
+  - dernachat (numeric) 
+  - modecommissionid (integer) nullable
+  - tarifid (integer) nullable
+  - ht_vente2 (numeric) 
+  - pmarge2 (numeric) 
+  - remise_vente2 (numeric) 
+  - ttc_vente2 (numeric) 
+  - prixarrondi (boolean) 
+  - qtecolisage (numeric) 
+  - codebalance (text) nullable
+  - dlc (text) nullable
+  - favori (boolean) 
+  - ispack (boolean) 
+  - cout_revient (numeric) 
+  - urlimage (text) nullable
+  - datedebutlot (timestamp without time zone) 
+  - datedebutremise (timestamp without time zone) nullable
+  - datefinremise (timestamp without time zone) nullable
+  - remiseduau (numeric) 
+  - promoactif (boolean) 
+  - codepromoid (integer) nullable
+  - siteid (integer) nullable
+  - dlcbalance (text) nullable
+  - hideinweb (boolean) 
+  - codesimilaire (integer) 
+  - nomchimique (text) nullable
+  - typefactureid (integer) nullable
+  - fonction (text) nullable
+  - qtestock (numeric) 
+  - webid (bigint) 
+  - qtestockweb (numeric) 
+  - isventeweb (boolean) 
+  - categoriewebid (integer) nullable
+  - echantillonid (bigint) nullable
+  - periodegarantie (integer) 
+  - sku (text) nullable
+
+Table: stocks
+  - stockid (bigint) 
+  - produitid (bigint) 
+  - siteid (integer) 
+  - qtestock (numeric) 
+  - stockvirtuel (numeric) 
+  - stockreserve (numeric) 
+  - valeurachatht (numeric) 
+  - valeurachatttc (numeric) 
+  - valeurventeht (numeric) 
+  - valeurventettc (numeric) 
+  - valeurstockht (numeric) 
+  - valeurstockttc (numeric) 
+  - pamp (numeric) 
+  - produit2id (bigint) nullable
+  - datedepart (timestamp without time zone) 
+  - qtedepart (numeric) 
+  - qteentree (numeric) 
+  - qtesortie (numeric) 
+  - qtestock2 (numeric) 
+  - entreeencour (numeric) 
+  - sorieencour (numeric) 
+  - entreeencourcalcule (numeric) 
+  - qtestockcalcule (numeric) 
+  - sorieencourcalcule (numeric) 
+  - stockvirtuelcalcule (numeric) 
+
+Table: sites
+  - siteid (integer) 
+  - siteabrege (text) 
+  - libelle (text) 
+  - description (text) nullable
+  - adresse (text) nullable
+  - adresse2 (text) nullable
+  - tel (text) nullable
+  - matf (text) nullable
+  - rc (text) nullable
+  - ordre (integer) 
+  - bloque (boolean) 
+  - isvente (boolean) 
+  - isachat (boolean) 
+  - isstock (boolean) 
+  - istransfert (boolean) 
+  - debutkey (bigint) 
+  - isdefault (boolean) 
+  - clientid (bigint) nullable
+  - debutkeyint (integer) 
+  - modestockmin (integer) 
+  - email (text) nullable
+  - fax (text) nullable
+  - libelle2 (text) nullable
+  - libellebanque (text) nullable
+  - rib (text) nullable
+  - tel2 (text) nullable
+  - isstockweb (boolean) 
+  - collectexclus1id (text) nullable
+  - collectexclus2id (text) nullable
+  - collectexclus3id (text) nullable
+
+Table: familles
+  - familleid (integer) 
+  - bloque (boolean) 
+  - description (text) nullable
+  - famillelibelle (text) 
+  - groupeid (integer) nullable
+  - image (bytea) nullable
+  - libellecourt (text) 
+  - ordre (integer) 
+  - datedebut (timestamp without time zone) nullable
+  - datefin (timestamp without time zone) nullable
+  - remise (numeric) 
+  - remisebloque (boolean) 
+  - hideinweb (boolean) 
+  - retourbloque (boolean) 
+  - webid (bigint) 
+  - libelleweb (text) nullable
+
+Table: sousfamilles
+  - sousfamilleid (integer) 
+  - bloque (boolean) 
+  - description (text) nullable
+  - familleid (integer) 
+  - image (bytea) nullable
+  - libellecourt (text) 
+  - ordre (integer) 
+  - sousfamillelibelle (text) 
+  - datedebut (timestamp without time zone) nullable
+  - datefin (timestamp without time zone) nullable
+  - remise (numeric) 
+  - remisebloque (boolean) 
+  - hideinweb (boolean) 
+  - retourbloque (boolean) 
+  - webid (bigint) 
+  - libelleweb (text) nullable
+
+Table: journalcaisses
+  - journalcaisseid (bigint) 
+  - userid (integer) 
+  - employeeid (integer) 
+  - caissierclotureid (integer) 
+  - siteid (integer) 
+  - dateouverture (timestamp without time zone) 
+  - datecloture (timestamp without time zone) nullable
+  - isclosed (boolean) 
+  - fondcaisse (numeric) 
+  - montantcloture (numeric) 
+  - montanttheorique (numeric) 
+  - envoyee (boolean) 
+  - caisseid (integer) nullable
+  - agencebid (integer) 
+  - montantdepense (numeric) 
+  - acomptenewticket (numeric) 
+  - acomptepersonnel (numeric) 
+  - complementacompte (numeric) 
+  - depensedivers (numeric) 
+  - ecart (numeric) 
+  - nbreretour (numeric) 
+  - nbreticket (numeric) 
+  - nbretransfertenv (numeric) 
+  - nbretransfertrecu (numeric) 
+  - premisefidelite (numeric) 
+  - premisepassager (numeric) 
+  - recettebrut (numeric) 
+  - recettenet (numeric) 
+  - recettephysique (numeric) 
+  - retourticket (numeric) 
+  - totalacompteticket (numeric) 
+  - totalbonconvention (numeric) 
+  - totalcheque (numeric) 
+  - totalcontrebon (numeric) 
+  - totalcredit (numeric) 
+  - totalespece (numeric) 
+  - totalqteretour (numeric) 
+  - totalqtetransfertrecu (numeric) 
+  - totalqtevente (numeric) 
+  - totalregautre (numeric) 
+  - totalregavoir (numeric) 
+  - totaltkresto (numeric) 
+  - totaltpe (numeric) 
+  - ventereglee (numeric) 
+  - vremisefidelite (numeric) 
+  - vremisepassager (numeric) 
+  - vtotalremise (numeric) 
+  - journalcaissenumero (bigint) 
+  - totalqtetransfertenv (numeric) 
+  - totalcreditacompte (numeric) 
+  - vremiseclient (numeric) 
+  - totalbonconventionphys (numeric) 
+  - totalchequephys (numeric) 
+  - totalcommission (numeric) 
+  - totalcontrebonphys (numeric) 
+  - totaldepense (numeric) 
+  - totalespecephys (numeric) 
+  - totalregautrephys (numeric) 
+  - totalregavoirphys (numeric) 
+  - totaltkrestophys (numeric) 
+  - totaltpephys (numeric) 
+  - totalespecenet (numeric) 
+  - totalecart (numeric) 
+  - totalecartbonconvention (numeric) 
+  - totalecartchequecadeau (numeric) 
+  - totalcoupon (numeric) 
+  - totalecartcoupon (numeric) 
+  - totaloffre (numeric) 
+
+Table: journalcaissedets
+  - journalcaissedetid (bigint) 
+  - journalcaisseid (bigint) 
+  - priorite (integer) 
+  - libelle (text) nullable
+  - valeur (numeric) 
+  - sectionclotureid (integer) 
+  - isnotprint (boolean) 
+  - achatht (numeric) 
+  - achatttc (numeric) 
+  - isnotsendemail (boolean) 
+  - margeht (numeric) 
+  - margettc (numeric) 
+  - pmarge (numeric) 
+  - pmargettc (numeric) 
+  - qte (numeric) 
+
+Table: caisses
+  - caisseid (integer) 
+  - compteur (integer) 
+  - libelle (text) nullable
+  - facturation (boolean) 
+  - agencebid (integer) 
+  - bloque (boolean) 
+  - clientid (bigint) nullable
+  - employeeid (integer) nullable
+  - siteid (integer) nullable
+  - numero (integer) 
+  - machineid (integer) nullable
+
+Table: sectionclotures
+  - sectionclotureid (integer) 
+  - libelle (text) nullable
+  - libelle2 (text) nullable
+  - description (text) nullable
+  - priorite (integer) 
+  - isvisible (boolean) 
+  - issendemail (boolean) 
+
+--- TOUTES LES TABLES (public) ---
+
+Territories, __EFMigrationsHistory, agencebs, alimentations, anomalieapis, backconfigs, backgrlinks, backlinks, bonachats, bonconventions, bonentrees, bonsorties, bontransferts, bordereaulivraisons, bordereaus, caisseconfigs, caisses, caissierdroitdets, caissierdroits, carnetcheques, categories, categories2, categories3, categories4, categoriewebs, cavoirs, cbls, cblts, cbrs, ccommandes, cdeviss, centrecharges, cfactures, chargefixeprevs, cheques, chiffrages, clientcategorie2s, clientcategories, clientfamilles, clients, codepromos, codesoldepromos, composantcdevis, composantchiffrages, composants, comptoir, configfichesuiveuses, configfidelites, couleurs, cpointages, creglementdets, creglements, cretenues, cticketbalances, ctickets, defaultconfigcaisses, defaultconfigs, demandetransferts, departments, depenses, detbalances, detbonentrees, detbonsorties, detbontransferts, detbordereaulivraisons, detcavoirs, detcbls, detcblts, detcbrs, detccs, detcdeviss, detcfactures, detchiffrages, detcodepromos, detcodesoldepromos, detcretenues, detcticketbalances, detctickets, detdemandetransferts, detdispatchings, detfavoirs, detfbls, detfbrs, detfcs, detfdeviss, detffactures, detficheprodchiffrages, detfretenues, detgamme1s, detgamme2s, detinterventions, detinventaires, detlotfichesuiveuses, detmodecommissions, detpacks, detplanningprods, detreassorts, detreassorttcs, dettemplateimports, detterminaldatas, devises, dispatchings, dossiertravails, echantillons, emballages, emplacements, employees, entreeclts, entreeprods, etageemplacements, etapesfabrications, etatbls, etatbontranferts, etatcommandes, etatdemandetransferts, etatdeviss, etatfactures, etatficheprods, etatfichesuiveuses, etatpcommandes, etatreclamationclts, fabriquants, familledepenses, familles, favoirs, fbls, fbrs, fcommandes, fdeviss, ffactures, ficheprodchiffrages, fichesuiveusedets, fichesuiveuses, fichesuiveuseversiondets, fichesuiveuseversions, fichetechniqueessaidets, fichetechniqueessais, formuleemballageclts, formuleemballages, fournisseurcategorie2s, fournisseurcategories, fournisseurfamilles, fournisseurs, fpointages, freglementdets, freglements, fretenues, gamme1s, gamme2s, gammeproductiondets, groupes, interventions, inventaires, journalcaissedets, journalcaisses, journalproduits, journaltransactions, libelleinterventions, loggedactions, masterreports, masterviewclasses, masterviewdets, masterviews, masterviewtries, masterviewusers, modalitereglements, modecommissions, modelivraisons, modepieces, modereglements, niveauemplacements, nomenclaturedets, nomenclatureessaidets, nomenclatureessais, nomenclatures, notes, param, pcommandes, personnelfichesuiveuses, phaseproductions, piecejointes, planningprodemps, planningprods, postecharges, produit2minmaxbysites, produit2s, produit4s, produitclts, produitimages, produitlots, produitminmaxbysites, produitprixs, produitreductionbalances, produits, produitsimilaires, produittarifqtes, produittarifs, projetdevs, propositionachats, prospects, rayonemplacements, reassorts, reclamationclts, reductionbalances, regions, reportconfigs, reportlistconfigs, reportlists, reports, reporttypes, retailconfigs, sectionclotures, sectionconfigs, sites, societes, sortieclts, sortieprods, sousfamilles, stations, statuscheques, statusfactures, statusreglements, statutdocuments, stock2s, stockbybobines, stockbylots, stocks, tailles, tarifclientdets, tarifproduitdets, tarifs, taxeconfigs, taxefamilles, taxes, tbl_test, tempfiche, templateimports, terminaldatas, typechequecadeaus, typecommandes, typedroitcaisses, typedroits, typeemballages, typefactures, typeimpressions, typeinterventions, typematieres, typepostecharges, typeproduits, typestocks, unites, uniteventes, userbackgrlinks, userbacklinks, userdroitdets, userdroits, userlinks, users, vehicules

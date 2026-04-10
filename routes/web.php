@@ -37,7 +37,7 @@ Route::get('/logo', function () {
 
 Route::middleware('auth')->group(function () {
 
-    Route::get('/', fn () => redirect()->route('stock.index'));
+    Route::get('/', fn () => redirect()->route('statistiques.index'));
 
     Route::get('/dashboard', function () {
         $fournisseurs = DB::table('fournisseurs')
